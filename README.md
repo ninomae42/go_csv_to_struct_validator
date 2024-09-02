@@ -1,1 +1,1 @@
-# csv_struct_validator
+# Go CSV to Struct Validator

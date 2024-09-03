@@ -10,9 +10,15 @@ import (
 func main() {
 	fileNameCSV := flag.String("csv", "", "CSV file path")
 	fileNameStruct := flag.String("struct", "", "Struct file path")
+	assertionMode := flag.String("mode", "all", "assertion mode")
 	flag.Parse()
 
-	ok, err := assert.AssertCSVStruct(*fileNameCSV, *fileNameStruct)
+	mode := assert.AssertModeAll
+	if *assertionMode == "print" {
+		mode = assert.AssertModeAssertAndPrint
+	}
+
+	ok, err := assert.AssertCSVStruct(*fileNameCSV, *fileNameStruct, mode)
 	if err != nil {
 		log.Fatalln(err)
 	}

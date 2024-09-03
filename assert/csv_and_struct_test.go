@@ -61,7 +61,7 @@ func TestAssertCSVStruct(t *testing.T) {
 	for _, tt := range tests {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
-			ok, err := assert.AssertCSVStruct(tt.give.fileNameCSV, tt.give.fileNameStruct)
+			ok, err := assert.AssertCSVStruct(tt.give.fileNameCSV, tt.give.fileNameStruct, assert.AssertModeAll)
 			if ok != tt.want.ok {
 				t.Errorf("got %v, want %v", ok, tt.want.ok)
 			}
